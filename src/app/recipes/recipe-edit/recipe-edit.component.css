@@ -1,0 +1,7 @@
+.mb-2 {
+  margin-bottom: 20px;
+}
+input.ng-invalid,
+textarea.ng-invalid {
+  border: 1px solid red;
+}
