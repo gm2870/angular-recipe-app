@@ -17,7 +17,6 @@ export class AuthComponent {
     this.isLoggedIn = !this.isLoggedIn;
   }
   onSubmit(form: NgForm) {
-    console.log(form.value);
     this.isLoading = true;
     const email = form.value.email;
     const password = form.value.password;
