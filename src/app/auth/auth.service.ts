@@ -20,6 +20,8 @@ export interface AuthResponseData {
 export class AuthService {
   private tokenExpirationTimer: any;
   constructor(private http: HttpClient, private router: Router) {}
+  // BehaviorSubject gives access to previous value that was emmited at another time
+  // means that we can subscribe even after a value was emitted
   user = new BehaviorSubject<User>(null);
   signup(email: string, password: string) {
     return this.http

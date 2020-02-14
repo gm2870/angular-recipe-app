@@ -48,7 +48,7 @@ export class AuthComponent implements OnDestroy {
       authObs = this.authService.signup(email, password);
     }
     authObs.subscribe(
-      response => {
+      () => {
         this.isLoading = false;
         this.router.navigate(['./recipes']);
       },
@@ -62,10 +62,17 @@ export class AuthComponent implements OnDestroy {
   }
   private showErrorAlert(message: string) {
     const alertCmpFactory = this.componentFactoryResolver.resolveComponentFactory(AlertComponent);
+    // angular needs to know where to attach AlertComponent in the DOM
+    //this can be done using PlaceholderDirective
+
+    //viewContainerRef gives access to the element where the PlaceholderDirective is pointing to
     const hostViewContainerRef = this.alertHost.viewContainerRef;
     hostViewContainerRef.clear();
     const componentRef = hostViewContainerRef.createComponent(alertCmpFactory);
+    //using instance object for data and event binding
     componentRef.instance.message = message;
+
+    //event binding
     this.closeSub = componentRef.instance.closeAlert.subscribe(() => {
       this.closeSub.unsubscribe();
       hostViewContainerRef.clear();
