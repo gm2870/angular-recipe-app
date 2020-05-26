@@ -39,7 +39,6 @@ export class RecipeEditComponent implements OnInit {
       recipeImagePath = recipe.imagePath;
       recipeDescription = recipe.description;
       if (recipe.ingredients) {
-        console.log('hi');
         for (let ingredient of recipe.ingredients) {
           recipeIngredients.push(
             new FormGroup({
